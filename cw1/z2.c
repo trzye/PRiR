@@ -1,12 +1,15 @@
-﻿#include <stdio.h>
-#include <unistd.h> //funkcje unixowe, fork
-#include <sys/wait.h> 
-#include <stdlib.h>
 /*
 Napisz program, który wczyta z pliku wektor liczb typu double oraz podzieli go na n podwektorów w miarę możliwości równych. 
 Wykorzystując równoległe procesy znajdź w każdym podwektorze MAKSYMALNĄ (lub minimalną, lub średnią) wartość elementu i
 wypisz na ekran. Nazwa pliku i liczba podwektorów powinna być podana jako argument linii komend.
 */
+
+
+#include <stdio.h>
+#include <unistd.h> //funkcje unixowe, fork
+#include <sys/wait.h> 
+#include <stdlib.h>
+
 float maximum(int start, int end, float* num){
 	float max = num[start];
 	for(int j=start+1; j<end; j++){
