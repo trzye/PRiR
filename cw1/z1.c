@@ -1,12 +1,15 @@
-﻿#include <stdio.h>
-#include <unistd.h> //funkcje unixowe, fork
-#include <sys/wait.h> 
-
 /*
 Napisz program tworzący “linię” 5 procesów, w której każdy proces potomny jest przodkiem następnego procesu 
 (a więc pierwszy proces jest ojcem drugiego, dziadkiem trzeciego itd). Podpowiedź: każdy proces macierzysty
 przed zakończeniem swojego działania powinien zaczekać na zakończenie swojego potomka. Pamiętaj o obsłudze błędów!
 */
+
+
+#include <stdio.h>
+#include <unistd.h> //funkcje unixowe, fork
+#include <sys/wait.h> 
+
+
 int printPID(int offsprings){
 	
 	// wypisuje identyfikator procesu 
