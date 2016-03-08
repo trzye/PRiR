@@ -67,6 +67,13 @@ void on_usr1(int signal) {
 }
 
 /*
+	Operation after receiving USR2 signal.
+*/
+void on_usr2(int signal) {
+	printf("%d: Otrzymalem USR2\n", getpid());
+}
+
+/*
 	Setting management of USR1 signal
 */
 void set_usr1_signal() {
@@ -81,9 +88,23 @@ void set_usr1_signal() {
 }
 
 /*
+	Setting management of USR1 signal
+*/
+void set_usr2_signal() {
+	sigset_t mask;
+	
+	struct sigaction usr2;
+	sigemptyset(&mask); 
+	usr2.sa_handler = (&on_usr2);
+	usr2.sa_mask = mask;
+	usr2.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR2, &usr2, NULL);
+}
+
+/*
 	Creates children and sets operation for USR1 signal.
 */
-void create_children() {
+void create_children(int parent_pid) {
 	int child_id;
 	
 	for(child_id=0; child_id<CHILDREN_NUMBER; child_id++){
@@ -94,13 +115,15 @@ void create_children() {
 		} else if (pid == 0) {
 			printf("Child\t (%d): %d\n", child_id + 1, getpid());
 			set_usr1_signal();
-			while(1) 
-				pause();
+			kill(parent_pid, SIGUSR2);
+			return;
 		} else  {
 			 printf("Parent\t (%d): %d\n", child_id + 1, getpid());
+			 wait(NULL);
 		}
 	}
 }
+
 
 /*
 	Waits for all children to be closed.
@@ -116,21 +139,32 @@ void wait_for_children() {
 
 int main(int argc, char **argv) { 
 
+	pid_t parent_pid = getpid() ;
+
 	int vector_length;
 	double* vector; 
 	double vector_sum;
 	
-	create_children();
+	set_usr2_signal();
+	create_children(parent_pid);
 	
-	vector = read_vector(&vector_length);
-	vector_sum = sum(vector, vector_length);
+	//process parent
+	if(getpid() == parent_pid) {
 		
-	print_vector(vector, vector_length);
+		vector = read_vector(&vector_length);
+		vector_sum = sum(vector, vector_length);
+		print_vector(vector, vector_length);
+		printf("Suma elementow w wektorze = %f\n", vector_sum );
+		
+		//kill(parent_pid+1, SIGUSR1);
+		wait_for_children();
+		
+		return 0;
+	} 
 	
-	wait_for_children() ;
-	
-	printf("Suma elementow w wektorze = %f\n", vector_sum );
-
+	//wait for children USR1 signals
+	while(1)
+		pause();
 	
 	return 0;
 }
