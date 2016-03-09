@@ -1,0 +1,17 @@
+==> c1.txt <==
+Czas wykonania: 0.019711 [s] dla 1 procesow potomnych
+
+==> c2.txt <==
+Czas wykonania: 0.017107 [s] dla 2 procesow potomnych
+
+==> c4.txt <==
+Czas wykonania: 0.018014 [s] dla 4 procesow potomnych
+
+==> c6.txt <==
+Czas wykonania: 0.019196 [s] dla 6 procesow potomnych
+
+==> c8.txt <==
+Czas wykonania: 0.021325 [s] dla 8 procesow potomnych
+
+==> c16.txt <==
+Czas wykonania: 0.022280 [s] dla 16 procesow potomnych

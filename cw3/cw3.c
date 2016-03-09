@@ -8,6 +8,7 @@
 #include <errno.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#include <time.h>
 
 #define BUFFOR_SIZE 80
 #define CHILDREN_NUMBER 16
@@ -17,8 +18,12 @@ int   shmid;
 char* shmaddr;
 double* vector; 
 int child_id;
-
-
+/*
+void get_system_time(){
+    time_t result = time(NULL);
+    return gmtime(&result);
+}
+*/
 void save_data_to_shared_memory(int key, char* data){
 	if( (shmid = shmget(key, BUFFOR_SIZE, 0666 | IPC_CREAT)) < 0)
 		printf("shmget error");
@@ -117,8 +122,8 @@ void on_usr1(int signal) {
 	int index2 = atoi(read_data_from_shared_memory(child_id + 1));	
 	char buffor[BUFFOR_SIZE+1];
 
-	printf("%d: Otrzymalem USR1\n", getpid());	
-	printf("%d: Moje indexy: [%d:%d]]\n",getpid(), index1, index2);	
+	printf("%d: Otrzymalem USR1\t\t", getpid());	
+	printf("%d: Moje indexy: [%d:%d]]\t\t",getpid(), index1, index2);	
 	
 	double sum = 0.0f;
 	for(; index1< index2; index1++) {
@@ -131,13 +136,6 @@ void on_usr1(int signal) {
 
 	printf("%d: Moj wynik sumowania: %f\n",getpid(), sum);	
 	exit(0);
-}
-
-/*
-	Operation after receiving USR2 signal.
-*/
-void on_usr2(int signal) {
-	printf("%d: Otrzymalem USR2\n", getpid());
 }
 
 /*
@@ -155,20 +153,6 @@ void set_usr1_signal() {
 }
 
 /*
-	Setting management of USR1 signal
-*/
-void set_usr2_signal() {
-	sigset_t mask;
-	
-	struct sigaction usr2;
-	sigemptyset(&mask); 
-	usr2.sa_handler = (&on_usr2);
-	usr2.sa_mask = mask;
-	usr2.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR2, &usr2, NULL);
-}
-
-/*
 	Creates children and sets operation for USR1 signal.
 */
 void create_children(int parent_pid) {
@@ -178,14 +162,10 @@ void create_children(int parent_pid) {
 			printf("Error");
 			exit(1);
 		} else if (pid == 0) {
-			printf("Child\t (%d): %d\n", child_id + 1, getpid());
+			printf("Child\t (%d)\t: %d\n", child_id + 1, getpid());
 			set_usr1_signal();
-			kill(parent_pid, SIGUSR2);
 			return;
-		} else  {
-			 printf("Parent\t (%d): %d\n", child_id + 1, getpid());
-			 wait(NULL);
-		}
+		} 
 	}
 }
 
@@ -203,6 +183,8 @@ void wait_for_children() {
 
 int main(int argc, char **argv) { 
 
+    clock_t start = clock();
+
 	pid_t parent_pid = getpid() ;
 
 	int vector_length;
@@ -211,7 +193,6 @@ int main(int argc, char **argv) {
 	
 	vector = malloc(sizeof(double) * 10000);
 	
-	set_usr2_signal();
 	create_children(parent_pid);
 	
 	//process parent
@@ -219,9 +200,6 @@ int main(int argc, char **argv) {
 		
 		vector = read_vector(&vector_length);
 		write_vector_indexes(vector_length) ;
-		vector_sum = sum(vector, vector_length);
-		print_vector(vector, vector_length);
-		printf("Suma elementow w wektorze (bez procesow)= %f\n", vector_sum );
 		
 		for(j=1; j<=CHILDREN_NUMBER; j++){
 			kill(parent_pid+j, SIGUSR1);
@@ -229,12 +207,20 @@ int main(int argc, char **argv) {
 		
 		wait_for_children();
 		int n;
-		float sum = 0.0f;
+		float vector_sum_p = 0.0f;
 		for(n=-CHILDREN_NUMBER; n < 0; n++){
 			float res = atof(read_data_from_shared_memory(n));
-			sum += res;
+			vector_sum_p += res;
 		}
-		printf("Suma elementow w wektorze (z procesami)= %f\n", sum);
+		printf("Suma elementow w wektorze (z procesami)= %f\n", vector_sum_p);
+		
+		clock_t end = clock();
+		double time_elapsed_in_seconds = (end - start)/(double)CLOCKS_PER_SEC;
+		
+		
+		vector_sum = sum(vector, vector_length);
+		printf("Suma elementow w wektorze (bez procesow)= %f\n", vector_sum );
+		printf("Czas wykonania: %f [s] dla %d procesow potomnych\n", time_elapsed_in_seconds, CHILDREN_NUMBER);
 		
 		return 0;
 	} 

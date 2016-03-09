@@ -1,0 +1,19 @@
+Child	 (1)	: 18505
+18505: Otrzymalem USR1		18505: Moje indexy: [0:132]]		18505: Moj wynik sumowania: 2730.000000
+Child	 (2)	: 18506
+18506: Otrzymalem USR1		18506: Moje indexy: [132:264]]		18506: Moj wynik sumowania: 2766.000000
+Child	 (3)	: 18507
+18507: Otrzymalem USR1		18507: Moje indexy: [264:396]]		18507: Moj wynik sumowania: 2802.000000
+Child	 (4)	: 18508
+18508: Otrzymalem USR1		18508: Moje indexy: [396:528]]		18508: Moj wynik sumowania: 2838.000000
+Child	 (5)	: 18509
+18509: Otrzymalem USR1		18509: Moje indexy: [528:660]]		18509: Moj wynik sumowania: 3283.000000
+Child	 (6)	: 18510
+18510: Otrzymalem USR1		18510: Moje indexy: [660:792]]		18510: Moj wynik sumowania: 7122.000000
+Child	 (7)	: 18511
+18511: Otrzymalem USR1		18511: Moje indexy: [792:924]]		18511: Moj wynik sumowania: 2874.000000
+Child	 (8)	: 18512
+18512: Otrzymalem USR1		18512: Moje indexy: [924:1056]]		18512: Moj wynik sumowania: 2706.000000
+Suma elementow w wektorze (z procesami)= 27121.000000
+Suma elementow w wektorze (bez procesow)= 27121.000000
+Czas wykonania: 0.021325 [s] dla 8 procesow potomnych
