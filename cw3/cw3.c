@@ -10,7 +10,7 @@
 #include <sys/shm.h>
 
 #define BUFFOR_SIZE 80
-#define CHILDREN_NUMBER 5
+#define CHILDREN_NUMBER 16
 #define MEMORY_KEY 123
 
 int   shmid;
@@ -93,7 +93,7 @@ double* read_vector(int *vector_length) {
 */
 void write_vector_indexes(int vector_length) {
 	char buffor[BUFFOR_SIZE+1];
-	int interval = vector_length / CHILDREN_NUMBER;
+	int interval = vector_length / CHILDREN_NUMBER + 1;
 	int j;
 	for(j=0; j<CHILDREN_NUMBER*2; j=j+2){
 		sprintf(buffor, "%d", interval * j);
