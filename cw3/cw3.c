@@ -110,10 +110,22 @@ void write_vector_indexes(int vector_length) {
 	Operation after receiving USR1 signal.
 */
 void on_usr1(int signal) {
-	printf("%d: Otrzymalem USR1\n", getpid());	
+
 	int index1 = atoi(read_data_from_shared_memory(child_id ));
-	int index2 = atoi(read_data_from_shared_memory(child_id + 1));
+	int index2 = atoi(read_data_from_shared_memory(child_id + 1));	
+	char buffor[BUFFOR_SIZE+1];
+
+	double sum = 0.0f;
+	for(; index1< index2; index1++) {
+		sum += vector[index1];
+	}
+	
+	sprintf(buffor, "%f", sum);
+	save_data_to_shared_memory(-child_id - 1, buffor);
+	
+	printf("%d: Otrzymalem USR1\n", getpid());	
 	printf("%d: Moje indexy: [%d:%d]]\n",getpid(), index1, index2);	
+	printf("%d: Moj wynik sumowania: %f\n",getpid(), sum);	
 	exit(0);
 }
 
@@ -193,6 +205,8 @@ int main(int argc, char **argv) {
 	double vector_sum;
 	int j;
 	
+	vector = malloc(sizeof(double) * 10000);
+	
 	set_usr2_signal();
 	create_children(parent_pid);
 	
@@ -210,6 +224,9 @@ int main(int argc, char **argv) {
 		}
 		
 		wait_for_children();
+		
+		float res = atof(read_data_from_shared_memory(-1));
+		printf("res: %f \n", res);
 		
 		return 0;
 	} 
