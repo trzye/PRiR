@@ -18,6 +18,7 @@ char* shmaddr;
 double* vector; 
 int child_id;
 
+
 void save_data_to_shared_memory(int key, char* data){
 	if( (shmid = shmget(key, BUFFOR_SIZE, 0666 | IPC_CREAT)) < 0)
 		printf("shmget error");
@@ -81,6 +82,7 @@ double* read_vector(int *vector_length) {
 	for(i=0; i<*vector_length; i++) {
 		fgets(buffor, BUFFOR_SIZE, f);
 		vector[i] = atof(buffor);
+		save_data_to_shared_memory(10000 + i, buffor);
 	}
 	fclose(f);
 	return vector;
@@ -115,16 +117,18 @@ void on_usr1(int signal) {
 	int index2 = atoi(read_data_from_shared_memory(child_id + 1));	
 	char buffor[BUFFOR_SIZE+1];
 
+	printf("%d: Otrzymalem USR1\n", getpid());	
+	printf("%d: Moje indexy: [%d:%d]]\n",getpid(), index1, index2);	
+	
 	double sum = 0.0f;
 	for(; index1< index2; index1++) {
-		sum += vector[index1];
+		double num = atof(read_data_from_shared_memory(10000 + index1));
+		sum += num;
 	}
 	
 	sprintf(buffor, "%f", sum);
 	save_data_to_shared_memory(-child_id - 1, buffor);
-	
-	printf("%d: Otrzymalem USR1\n", getpid());	
-	printf("%d: Moje indexy: [%d:%d]]\n",getpid(), index1, index2);	
+
 	printf("%d: Moj wynik sumowania: %f\n",getpid(), sum);	
 	exit(0);
 }
@@ -217,16 +221,20 @@ int main(int argc, char **argv) {
 		write_vector_indexes(vector_length) ;
 		vector_sum = sum(vector, vector_length);
 		print_vector(vector, vector_length);
-		printf("Suma elementow w wektorze = %f\n", vector_sum );
+		printf("Suma elementow w wektorze (bez procesow)= %f\n", vector_sum );
 		
 		for(j=1; j<=CHILDREN_NUMBER; j++){
 			kill(parent_pid+j, SIGUSR1);
 		}
 		
 		wait_for_children();
-		
-		float res = atof(read_data_from_shared_memory(-1));
-		printf("res: %f \n", res);
+		int n;
+		float sum = 0.0f;
+		for(n=-CHILDREN_NUMBER; n < 0; n++){
+			float res = atof(read_data_from_shared_memory(n));
+			sum += res;
+		}
+		printf("Suma elementow w wektorze (z procesami)= %f\n", sum);
 		
 		return 0;
 	} 
