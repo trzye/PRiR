@@ -26,9 +26,7 @@ public class CalculateNormThread extends Thread {
             }
         }
 
-        synchronized (this.C) {
-            this.C.setNorm(this.C.getNorm() + res);
-        }
+        this.C.setNorm(this.C.getNorm() + res);
 
         this.LOG.debug(String.format("Watek [%s], obliczyl indeksy [%d -> %d]", this.getId(), this.index1, this.index2));
 

@@ -1,0 +1,25 @@
+"C:\Program Files\Java\jdk1.8.0_65\bin\java" -Didea.launcher.port=7533 "-Didea.launcher.bin.path=C:\Users\Michał\AppData\Roaming\JetBrains\IntelliJ IDEA 15.0\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_65\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_65\jre\lib\rt.jar;E:\Users\Michal\Git\PRiR\cw4\java-macierze\out\production\PRiR4;E:\Users\Michal\Git\PRiR\cw4\java-macierze\lib\log4j-1.2.17.jar;E:\Users\Michal\Git\PRiR\cw4\java-macierze\lib\javaee-api-5.0-2.jar;E:\Users\Michal\Git\PRiR\cw4\java-macierze\lib\google-collections-1.0.jar;C:\Users\Michał\AppData\Roaming\JetBrains\IntelliJ IDEA 15.0\lib\idea_rt.jar" com.intellij.rt.execution.application.AppMain Main C.txt D.txt 3
+2016-03-16 09:32:19 DEBUG Main:36 - Liczba watkow: 3
+2016-03-16 09:32:19 INFO  Main:39 - [Z watkami] Zaczynam obliczenia
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:28 - Liczba indeksow: 800000
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:36 - Podział indeksów: Indexes{indexesMap={0=0=266665, 1=266666=533331, 2=533332=799999}, indexes=800000, threads=3}
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:22 - Watek [11], przygotowany do liczenia indeksow [0 -> 266665]
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:22 - Watek [12], przygotowany do liczenia indeksow [266666 -> 533331]
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:22 - Watek [13], przygotowany do liczenia indeksow [533332 -> 799999]
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:36 - Watek [12], obliczyl indeksy [266666 -> 533331]
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:36 - Watek [13], obliczyl indeksy [533332 -> 799999]
+2016-03-16 09:32:19 DEBUG MatrixMultipleThread:36 - Watek [11], obliczyl indeksy [0 -> 266665]
+2016-03-16 09:32:19 INFO  Main:42 - [Z watkami] Skonczylem obliczenia, czas wykonywania  [446829071 ns]
+2016-03-16 09:32:19 INFO  Main:48 - [Bez watkow] Zaczynam obliczenia
+2016-03-16 09:32:20 INFO  Main:52 - [Bez watkow] Skonczylem obliczenia, czas wykonywania [833942148 ns]
+2016-03-16 09:32:21 INFO  Main:58 - W obu wypadkach macierze wynikowe sa takie same, roznica w czasie [387113077 ns]
+2016-03-16 09:32:21 INFO  Main:63 - [Z Watkami] Zaczynam obliczenia normy
+2016-03-16 09:32:21 DEBUG NormCalculator:23 - Liczba indeksow: 800000
+2016-03-16 09:32:21 DEBUG NormCalculator:32 - Podział indeksów: Indexes{indexesMap={0=0=266665, 1=266666=533331, 2=533332=799999}, indexes=800000, threads=3}
+2016-03-16 09:32:21 DEBUG CalculateNormThread:16 - Watek [14], przygotowany do liczenia indeksow [0 -> 266665]
+2016-03-16 09:32:21 DEBUG CalculateNormThread:31 - Watek [14], obliczyl indeksy [0 -> 266665]
+2016-03-16 09:32:21 DEBUG CalculateNormThread:16 - Watek [15], przygotowany do liczenia indeksow [266666 -> 533331]
+2016-03-16 09:32:21 DEBUG CalculateNormThread:31 - Watek [15], obliczyl indeksy [266666 -> 533331]
+2016-03-16 09:32:21 DEBUG CalculateNormThread:16 - Watek [16], przygotowany do liczenia indeksow [533332 -> 799999]
+2016-03-16 09:32:21 DEBUG CalculateNormThread:31 - Watek [16], obliczyl indeksy [533332 -> 799999]
+2016-03-16 09:32:21 INFO  Main:65 - [Z Watkami] Skończyłem obliczenia normy, wynik to 8021.092693642182

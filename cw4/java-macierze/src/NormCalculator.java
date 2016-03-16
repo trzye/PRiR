@@ -16,6 +16,7 @@ public class NormCalculator {
 
     public NormCalculator(final Matrix C, final int threadNumber) throws InterruptedException {
         this.C = C;
+        C.setNorm(0.0f);
         this.threadNumber = threadNumber;
 
         final Integer indexes = C.rows();
@@ -34,18 +35,6 @@ public class NormCalculator {
         this.join();
     }
 
-    public static double calculateAndGetResultWithoutThreads(final Matrix C) {
-        float res = 0.0f;
-
-        for (int i = 0; i < C.rows(); i++) {
-            for (int j = 0; j < C.cols(); j++) {
-                res += C.get(i, j) * C.get(i, j);
-            }
-        }
-
-        return Math.sqrt(res);
-    }
-
     private void join() throws InterruptedException {
         for (int j = 0; j < this.threadNumber; j++) {
             this.threads.get(j).join();
@@ -62,6 +51,11 @@ public class NormCalculator {
         final CalculateNormThread calculateThread = new CalculateNormThread(this.C, index1, index2);
         calculateThread.start();
         this.threads.add(calculateThread);
+        try {
+            calculateThread.join();
+        } catch (final InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public double getResult() {

@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PRiR4:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PRiR4_jar</output-path>
+    <root id="archive" name="PRiR4.jar">
+      <element id="module-output" name="PRiR4" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/log4j-1.2.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javaee-api-5.0-2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/google-collections-1.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

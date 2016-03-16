@@ -56,5 +56,3 @@
 2016-03-16 09:18:35 DEBUG CalculateNormThread:33 - Watek [14], obliczyl indeksy [0 -> 0]
 2016-03-16 09:18:35 DEBUG CalculateNormThread:33 - Watek [16], obliczyl indeksy [2 -> 4]
 2016-03-16 09:18:35 INFO  Main:65 - [Z Watkami] Skończyłem obliczenia normy, wynik to 3.8565023132578418
-2016-03-16 09:18:35 INFO  Main:67 - [Bez watkow] Zaczynam obliczenia normy
-2016-03-16 09:18:35 INFO  Main:68 - [Bez watkow] Skończyłem obliczenia normy, wynik to 3.8565023132578418
