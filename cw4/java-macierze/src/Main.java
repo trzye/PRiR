@@ -60,6 +60,15 @@ public class Main {
                 this.LOG.error("Macierze wynikowe NIE sa takie same");
             }
 
+            this.LOG.info("[Z Watkami] Zaczynam obliczenia normy");
+            final NormCalculator normCalculator = new NormCalculator(matrixMultiple.getResult(), threads);
+            this.LOG.info("[Z Watkami] Skończyłem obliczenia normy, wynik to " + normCalculator.getResult());
+
+            this.LOG.info("[Bez watkow] Zaczynam obliczenia normy");
+            this.LOG.info("[Bez watkow] Skończyłem obliczenia normy, wynik to "
+                    + NormCalculator.calculateAndGetResultWithoutThreads(matrixMultiple.getResult()));
+
+
         } else {
             this.LOG.error("Za mało argumentów wejściowych. Poprawny format to:\n" +
                     "[program] \"Sciezka do macierzy A\" \"Sciezka do macierzy B\" \"Liczba watkow\"");

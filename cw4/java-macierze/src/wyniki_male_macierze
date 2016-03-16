@@ -1,0 +1,60 @@
+2016-03-16 09:18:34 DEBUG Main:28 - Wczytalem A:
+[
+0.196717 0.160657 0.628787
+0.846665 0.20107 0.948445
+0.325611 0.517757 0.893094
+0.203669 0.843018 0.946533
+0.06191 0.457823 0.988852
+]
+
+2016-03-16 09:18:35 DEBUG Main:33 - Wczytalem B:
+[
+0.65933 0.41071
+0.94704 0.3911
+0.8786 0.7146
+]
+
+2016-03-16 09:18:35 DEBUG Main:36 - Liczba watkow: 3
+2016-03-16 09:18:35 INFO  Main:39 - [Z watkami] Zaczynam obliczenia
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:28 - Liczba indeksow: 5
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:36 - Podział indeksów: Indexes{indexesMap={0=0=0, 1=1=1, 2=2=4}, indexes=5, threads=3}
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:22 - Watek [11], przygotowany do liczenia indeksow [0 -> 0]
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:22 - Watek [12], przygotowany do liczenia indeksow [1 -> 1]
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:36 - Watek [11], obliczyl indeksy [0 -> 0]
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:22 - Watek [13], przygotowany do liczenia indeksow [2 -> 4]
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:36 - Watek [12], obliczyl indeksy [1 -> 1]
+2016-03-16 09:18:35 DEBUG MatrixMultipleThread:36 - Watek [13], obliczyl indeksy [2 -> 4]
+2016-03-16 09:18:35 INFO  Main:42 - [Z watkami] Skonczylem obliczenia, czas wykonywania  [13746573 ns]
+2016-03-16 09:18:35 DEBUG Main:45 - [Z watkami] A*B =
+[
+0.8343023 0.5929578
+1.5819569 1.1041311
+1.4896941 0.97443146
+1.7642808 1.0897458
+1.3432012 0.9111153
+]
+
+2016-03-16 09:18:35 INFO  Main:48 - [Bez watkow] Zaczynam obliczenia
+2016-03-16 09:18:35 INFO  Main:52 - [Bez watkow] Skonczylem obliczenia, czas wykonywania [1181503 ns]
+2016-03-16 09:18:35 DEBUG Main:55 - [Bez watkow] A*B =
+[
+0.8343023 0.5929578
+1.5819569 1.1041311
+1.4896941 0.97443146
+1.7642808 1.0897458
+1.3432012 0.9111153
+]
+
+2016-03-16 09:18:35 INFO  Main:58 - W obu wypadkach macierze wynikowe sa takie same, roznica w czasie [-12565070 ns]
+2016-03-16 09:18:35 INFO  Main:63 - [Z Watkami] Zaczynam obliczenia normy
+2016-03-16 09:18:35 DEBUG NormCalculator:22 - Liczba indeksow: 5
+2016-03-16 09:18:35 DEBUG NormCalculator:31 - Podział indeksów: Indexes{indexesMap={0=0=0, 1=1=1, 2=2=4}, indexes=5, threads=3}
+2016-03-16 09:18:35 DEBUG CalculateNormThread:16 - Watek [14], przygotowany do liczenia indeksow [0 -> 0]
+2016-03-16 09:18:35 DEBUG CalculateNormThread:16 - Watek [15], przygotowany do liczenia indeksow [1 -> 1]
+2016-03-16 09:18:35 DEBUG CalculateNormThread:16 - Watek [16], przygotowany do liczenia indeksow [2 -> 4]
+2016-03-16 09:18:35 DEBUG CalculateNormThread:33 - Watek [15], obliczyl indeksy [1 -> 1]
+2016-03-16 09:18:35 DEBUG CalculateNormThread:33 - Watek [14], obliczyl indeksy [0 -> 0]
+2016-03-16 09:18:35 DEBUG CalculateNormThread:33 - Watek [16], obliczyl indeksy [2 -> 4]
+2016-03-16 09:18:35 INFO  Main:65 - [Z Watkami] Skończyłem obliczenia normy, wynik to 3.8565023132578418
+2016-03-16 09:18:35 INFO  Main:67 - [Bez watkow] Zaczynam obliczenia normy
+2016-03-16 09:18:35 INFO  Main:68 - [Bez watkow] Skończyłem obliczenia normy, wynik to 3.8565023132578418

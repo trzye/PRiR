@@ -11,6 +11,7 @@ public class Matrix {
     private final int ncols;
     private final int nrows;
     private final float[] _data;
+    private float norm = 0.0f;
 
     public Matrix(final int r, final int c) {
         this.ncols = c;
@@ -32,6 +33,14 @@ public class Matrix {
             }
         }
         return res;
+    }
+
+    public float getNorm() {
+        return this.norm;
+    }
+
+    public void setNorm(final float norm) {
+        this.norm = norm;
     }
 
     public float get(final int r, final int c) {
