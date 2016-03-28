@@ -1,0 +1,27 @@
+C:\Users\Micha³\PycharmProjects\paraller>C:\Python27\python.exe C:/Users/Micha³/PycharmProjects/paraller/multiple.py 1
+Usage: python multiplication.py [ncpus] [fnameA] [fnameX]
+    [ncpus]  - the number of workers to run in parallel (default number of processors in the system),
+    [fnameA] - matrix A file name (default A.dat),
+    [ncpus]  - vector X file name (default XX.dat),
+
+Starting pp with 1 workers
+Time elapsed:  40.0350000858 s
+Job execution statistics:
+ job count | % of all jobs | job time sum | time per job | job server
+         4 |        100.00 |      40.0300 |    10.007500 | local
+Time elapsed since server creation 40.0360000134
+0 active tasks, 1 cores
+
+
+C:\Users\Micha³\PycharmProjects\paraller>C:\Python27\python.exe C:/Users/Micha³/PycharmProjects/paraller/multiple.py
+Usage: python multiplication.py [ncpus] [fnameA] [fnameX]
+    [ncpus]  - the number of workers to run in parallel (default number of processors in the system),
+    [fnameA] - matrix A file name (default A.dat),
+    [ncpus]  - vector X file name (default XX.dat),
+
+Starting pp with 4 workers
+Time elapsed:  10.013999939 s
+Job execution statistics:
+ job count | % of all jobs | job time sum | time per job | job server
+         4 |        100.00 |      40.0280 |    10.007000 | local
+Time elapsed since server creation 10.0169999599
