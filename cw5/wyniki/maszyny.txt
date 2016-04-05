@@ -1,0 +1,26 @@
+Usage: python multiplication.py [ncpus] [fnameA] [fnameX]
+    [ncpus]  - the number of workers to run in parallel (default number of processors in the system),
+    [fnameA] - matrix A file name (default A.dat),
+    [ncpus]  - vector X file name (default XX.dat),
+
+Starting pp with 1 workers
+Time elapsed:  20.0437610149 s
+Job execution statistics:
+ job count | % of all jobs | job time sum | time per job | job server
+        20 |        100.00 |      19.0335 |     0.951676 | local
+Time elapsed since server creation 20.0441739559
+1 active tasks, 1 cores
+
+Usage: python multiplication.py [ncpus] [fnameA] [fnameX]
+    [ncpus]  - the number of workers to run in parallel (default number of processors in the system),
+    [fnameA] - matrix A file name (default A.dat),
+    [ncpus]  - vector X file name (default XX.dat),
+
+Starting pp with 1 workers
+Time elapsed:  10.2581861019 s
+Job execution statistics:
+ job count | % of all jobs | job time sum | time per job | job server
+        10 |         50.00 |      10.0179 |     1.001792 | 194.29.146.152:6655
+        10 |         50.00 |      10.0170 |     1.001700 | local
+Time elapsed since server creation 10.2586200237
+0 active tasks, 1 cores

@@ -96,7 +96,7 @@ double* read_vector(int *vector_length) {
 /*
 	Writes vector indexes to shared memory
 */
-void write_vector_indexes(int vector_length) {
+void write_vector_indexes2(int vector_length) {
 	char buffor[BUFFOR_SIZE+1];
 	int interval = vector_length / CHILDREN_NUMBER + 1;
 	int j;
@@ -111,6 +111,38 @@ void write_vector_indexes(int vector_length) {
 			save_data_to_shared_memory(j + 1, buffor );
 		}
 	}
+}
+
+/*
+	Writes vector indexes to shared memory
+*/
+void write_vector_indexes(int vector_length) {
+	char buffor[BUFFOR_SIZE+1];
+	int interval = vector_length / CHILDREN_NUMBER;
+	int index1;
+	int index2;
+	
+	 for (j = 0; j < CHILDREN_NUMBER - 1; j++) {
+            index1 = interval * j;
+            index2 = interval * (j + 1) - 1;
+            sprintf(buffor, "%d", index1);
+			save_data_to_shared_memory(j * 2, buffor );
+			sprintf(buffor, "%d", index2);
+			save_data_to_shared_memory(j * 2 + 1, buffor );
+     }
+	 if (CHILDREN_NUMBER > 1) {
+			buffor = read_data_from_shared_memory((CHILDREN_NUMBER * 2) - 3);
+			save_data_to_shared_memory((CHILDREN_NUMBER * 2) - 2, buffor );
+			sprintf(buffor, "%d", vector_length - 1);
+			save_data_to_shared_memory((CHILDREN_NUMBER * 2) - 1, buffor );
+            this.indexesMap.put(threads - 1, new Pair<>(this.indexesMap.get(threads - 2).getValue() + 1, indexes - 1));
+     } else { //TODO
+			sprintf(buffor, "%d", 0);
+			save_data_to_shared_memory(0, buffor );
+			sprintf(buffor, "%d", vector_length - 1);
+			save_data_to_shared_memory(1, buffor );
+            this.indexesMap.put(threads - 1, new Pair<>(this.indexesMap.get(threads - 2).getValue() + 1, indexes - 1));
+    }
 }
 
 /*

@@ -1,0 +1,96 @@
+Sprawko
+
+I Testowanie programu za względu na rdzenie (na własnej maszynie)
+
+	1. Test - 1 rdzeń
+
+		Starting pp with 1 workers
+		Time elapsed:  40.0350000858 s
+		Job execution statistics:
+		 job count | % of all jobs | job time sum | time per job | job server
+				 4 |        100.00 |      40.0300 |    10.007500 | local
+		Time elapsed since server creation 40.0360000134
+		0 active tasks, 1 cores
+
+
+	2. Test - 4 rdzenie
+
+		Starting pp with 4 workers
+		Time elapsed:  10.013999939 s
+		Job execution statistics:
+		 job count | % of all jobs | job time sum | time per job | job server
+				 4 |        100.00 |      40.0280 |    10.007000 | local
+		Time elapsed since server creation 10.0169999599
+		0 active tasks, 4 cores
+
+	3. Rezultat:
+	
+		Uruchomienie programu na maszynie z 4 rdzeniami umożliwia zredukowanie czasu jego wykonania nawet 4 krotnie. 
+		W przypadkach, gdy dane testowe zawierały małe macierze czas ten nie różnił się znacząco, a nawet w przypadku uruchomienia na maszynie z jednym rdzeniem
+		obliczenia wykonywały się niezauważalnie szybciej, co jest związane z brakiem potrzeby zarządzania równolegle pracującymi zadaniami.
+
+II Testowanie programu za względu na ilośc maszyn (komunikacja sieciowa)
+
+	1. Test - 1 maszyna (prir)
+
+		Starting pp with 1 workers
+		Time elapsed:  20.0437610149 s
+		Job execution statistics:
+		 job count | % of all jobs | job time sum | time per job | job server
+				20 |        100.00 |      19.0335 |     0.951676 | local
+		Time elapsed since server creation 20.0441739559
+		1 active tasks, 1 cores
+
+	2. Test - 2 maszyny (prir i prir2)
+			
+		Starting pp with 1 workers
+		Time elapsed:  10.2581861019 s
+		Job execution statistics:
+		 job count | % of all jobs | job time sum | time per job | job server
+				10 |         50.00 |      10.0179 |     1.001792 | 194.29.146.152:6655
+				10 |         50.00 |      10.0170 |     1.001700 | local
+		Time elapsed since server creation 10.2586200237
+		0 active tasks, 1 cores
+		
+	3. Rezultat
+		
+		Uruchomienie programu na 2 maszynach umożliwiło zredukowanie czasu jego wykonania 2 krotnie.
+
+	4. Prawo Amdhala
+	
+		 1 / [(1 - P) + P/N]
+		 
+		 gdzie:
+				P - proporcja programu, która może ulec zrównolegleniu
+				N - liczba procesorów.
+				
+		Nasz program jest zrównoleglony poprzez podział macierzy względem liczby wierszy. Np. gdy macierz ma 200x100 elementów, to zadanie 
+		jest podzielone na 200 podzadań, a wynikiem jest wektor o tej samej długości. Czyli każde zadanie oblicza wartość jednego elementu w 
+		z wektora wynikowego.
+		
+		Zysk zrównoleglenia (zakładając, że mamy 200 rdzeni) będzie liniowo proporcjonalny (w tym przypadku 200 razy szybszy).
+		
+		W testowanym przypadku, na macierzy 20x10 mnożonej przez wektor 10x1 dla dwóch maszyn prawo Amdhala będzie wyglądać następująco:
+		
+		(dla 2 maszyn)
+		Time elapsed:  10.262775898 s
+		Time elapsed (whole program):  10.3471829891 s
+		P1 = 10.262775898 s / 10.3471829891 s = 0.99184250523
+		
+		(dla 1 maszyny)
+		Time elapsed:  20.276804924 s
+		Time elapsed (whole program):  20.3586468697 s
+		P2 = 20.276804924 s / 20.3586468697 s = 0.99597999089
+		
+		P = (P1 + P2) / 2 ≈ 0.9939
+		N = 2 (dwie maszyny)
+		
+		Wynik_z_prawa = 1 / [(1 - 0.9939) + 0.9939 / 2] ≈ 1.9878
+		
+		Na podstawie poprzednich rezultatów (czasów wykonywania programu):
+		
+		Wynik_z_testów = 20.0441739559 / 10.2586200237 ≈ 1.9538
+			
+		Wynik teoretycznego przyspieszenia programu jest zbliżony do tego wynikającego z testów. 
+		
+		

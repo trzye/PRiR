@@ -1,0 +1,35 @@
+Child	 (1)	: 18519
+18519: Otrzymalem USR1		18519: Moje indexy: [0:66]]		18519: Moj wynik sumowania: 1203.000000
+Child	 (2)	: 18520
+18520: Otrzymalem USR1		18520: Moje indexy: [66:132]]		18520: Moj wynik sumowania: 1527.000000
+Child	 (3)	: 18521
+18521: Otrzymalem USR1		18521: Moje indexy: [132:198]]		18521: Moj wynik sumowania: 1347.000000
+Child	 (4)	: 18522
+18522: Otrzymalem USR1		18522: Moje indexy: [198:264]]		18522: Moj wynik sumowania: 1419.000000
+Child	 (5)	: 18523
+18523: Otrzymalem USR1		18523: Moje indexy: [264:330]]		18523: Moj wynik sumowania: 1491.000000
+Child	 (6)	: 18524
+18524: Otrzymalem USR1		18524: Moje indexy: [330:396]]		18524: Moj wynik sumowania: 1311.000000
+Child	 (7)	: 18525
+18525: Otrzymalem USR1		18525: Moje indexy: [396:462]]		18525: Moj wynik sumowania: 1635.000000
+Child	 (8)	: 18526
+18526: Otrzymalem USR1		18526: Moje indexy: [462:528]]		18526: Moj wynik sumowania: 1203.000000
+Child	 (9)	: 18527
+18527: Otrzymalem USR1		18527: Moje indexy: [528:594]]		18527: Moj wynik sumowania: 1527.000000
+Child	 (10)	: 18528
+18528: Otrzymalem USR1		18528: Moje indexy: [594:660]]		18528: Moj wynik sumowania: 1756.000000
+Child	 (11)	: 18529
+18529: Otrzymalem USR1		18529: Moje indexy: [660:726]]		18529: Moj wynik sumowania: 5583.000000
+Child	 (12)	: 18530
+18530: Otrzymalem USR1		18530: Moje indexy: [726:792]]		18530: Moj wynik sumowania: 1539.000000
+Child	 (13)	: 18531
+18531: Otrzymalem USR1		18531: Moje indexy: [792:858]]		18531: Moj wynik sumowania: 1275.000000
+Child	 (14)	: 18532
+18532: Otrzymalem USR1		18532: Moje indexy: [858:924]]		18532: Moj wynik sumowania: 1599.000000
+Child	 (15)	: 18533
+18533: Otrzymalem USR1		18533: Moje indexy: [924:990]]		18533: Moj wynik sumowania: 1251.000000
+Child	 (16)	: 18534
+18534: Otrzymalem USR1		18534: Moje indexy: [990:1056]]		18534: Moj wynik sumowania: 1455.000000
+Suma elementow w wektorze (z procesami)= 27121.000000
+Suma elementow w wektorze (bez procesow)= 27121.000000
+Czas wykonania: 0.022280 [s] dla 16 procesow potomnych

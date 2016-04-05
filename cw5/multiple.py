@@ -3,7 +3,7 @@
 # Authors:
 #  VItalii Vanovschi -- base parallel program sum_primes.py),
 #  R. Szmurlo        -- base program mult_for_students.py),
-#  Michal Jereczek   -- merging above programs
+#  Michal Jereczek, Jagoda Łopatka   -- merging above programs
 # Desc: This program demonstrates parallel computations with pp module
 # It calculates multiplication of given matrix A and vector X
 # Parallel Python Software: http://www.parallelpython.com
@@ -58,8 +58,8 @@ print """Usage: python multiplication.py [ncpus] [fnameA] [fnameX]
 """
 
 # tuple of all parallel python servers to connect with
-ppservers = ()
-#ppservers = ("10.0.0.1",)
+# ppservers = ()
+# ppservers = ("194.29.146.152:6655",)
 
 if len(sys.argv) > 1:
     ncpus = int(sys.argv[1])

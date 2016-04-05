@@ -1,0 +1,5 @@
+Child	 (1)	: 18409
+18409: Otrzymalem USR1		18409: Moje indexy: [0:1049]]		18409: Moj wynik sumowania: 27121.000000
+Suma elementow w wektorze (z procesami)= 27121.000000
+Suma elementow w wektorze (bez procesow)= 27121.000000
+Czas wykonania: 0.019711 [s] dla 1 procesow potomnych

@@ -25,3 +25,4 @@ Job execution statistics:
  job count | % of all jobs | job time sum | time per job | job server
          4 |        100.00 |      40.0280 |    10.007000 | local
 Time elapsed since server creation 10.0169999599
+0 active tasks, 4 cores
